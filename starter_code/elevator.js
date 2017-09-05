@@ -17,8 +17,19 @@ class Elevator {
     clearInterval(this.acction);
   }
   updateEnter() {
-    (this.floor < this.requests[0]) ? this.floorUp() : (this.floor > this.requests[0]) ? this.floorDown() : (this.floor == this.requests[0]) ? this._passengersEnter() : false;
-    (this.floor < this.destiny[0] && this.empty == true) ? this.floorUp() : (this.floor > this.destiny[0] && this.empty == true) ? this.floorDown() : (this.floor == this.destiny[0] && this.empty == true) ? this._passengersLeave(): false;
+    if (this.floor < this.requests[0]) {this.floorUp();}
+    if (this.floor > this.requests[0]) {this.floorDown();}
+    if (this.floor == this.requests[0]) {this._passengersEnter();}
+
+    if (this.floor < this.destiny[0] && this.empty == true) {
+      this.floorUp();
+    }
+    if (this.floor > this.destiny[0] && this.empty == true) {
+      this.floorDown();
+    }
+    if (this.floor == this.destiny[0] && this.empty == true) {
+      this._passengersLeave();
+    }
   }
   _passengersEnter() {
     this.empty = true;
